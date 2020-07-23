@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-9">
+                <h3 class="display-4">{{ article.title }}</h3>
+                <small class="lead">{{ article.created_at|date:'Y, M d' }}</small>
+                <a class="btn btn-danger ml-5" href="{% url 'articles:delete' article.slug %}">Delete</a>
+                <a class="btn btn-warning ml-5" href="{% url 'articles:update' article.slug %}">Update</a>
+                <br><br>
+                <p class="text-justify">{{ article.content|linebreaksbr }}</p>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+{% endblock %}

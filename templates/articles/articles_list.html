@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="container mt-4">
+        <div class="col-md-9">
+            <p class="lead">Articles listing</p>
+
+            <div class="row">
+                {% if articles %}
+                    {% for article in articles %}
+                        <div class="col-md-6">
+                            <div class="card card-body">
+                                <h5 class="card-title">{{ article.title }}</h5>
+                                <p class="card-text">{{ article.content|truncatewords:20 }}</p>
+                                <div class="card-footer">
+                                    <a href="{% url 'articles:detail' article.slug %}" class="btn btn-primary">Read more</a>
+                                </div>
+                            </div>
+                            <br><br>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p class="lead">There is no articles</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
